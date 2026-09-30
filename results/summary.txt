@@ -1,0 +1,34 @@
+Датасет: Kaggle Spaceship Titanic, train.csv
+Размер исходных данных: 8693 строк, 14 столбцов.
+
+Первые 5 строк исходного датасета выводятся командой:
+df.head()
+
+Количество пропусков до обработки:
+PassengerId      0
+HomePlanet     201
+CryoSleep      217
+Cabin          199
+Destination    182
+Age            179
+VIP            203
+RoomService    181
+FoodCourt      183
+ShoppingMall   208
+Spa            183
+VRDeck         188
+Name           200
+Transported      0
+
+Метод заполнения:
+- числовые признаки (Age, RoomService, FoodCourt, ShoppingMall, Spa, VRDeck): медиана;
+- категориальные признаки: наиболее частое значение (мода).
+
+Преобразование:
+- PassengerId и Name исключены: это почти уникальные идентификаторы;
+- Cabin разделён на CabinDeck и CabinSide, номер каюты исключён;
+- числовые признаки нормализованы MinMaxScaler в диапазон [0, 1];
+- категориальные признаки закодированы OneHotEncoder(handle_unknown="ignore").
+
+После запуска preprocess_spaceship_titanic.py файл results/missing_values_after.csv
+содержит нули во всех столбцах: это проверка, что пропуски заполнены.
